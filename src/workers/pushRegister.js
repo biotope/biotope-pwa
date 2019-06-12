@@ -1,6 +1,3 @@
----
-to: <%= path %>/pushRegister.js
----
 
 const isServiceWorkerPushSupported = () => 'serviceWorker' in navigator && 'PushManager' in window;
 const isSubscribed = async () => (await swRegistration.pushManager.getSubscription()) !== null;
@@ -60,4 +57,4 @@ const setupPushNotifications = async (applicationKey) => {
   return createUnsubscribeUser(registration);
 }
 
-setupPushNotifications('<%= h.vapidKey %>');
+setupPushNotifications('BLrIiMUkDZ0T5-eL-NMuRq2UvlqOPWoV57c0zSP8R_017vx1tTXrivB1XB_vW63E5zTYrvPrd3MPlkmlstyybnM');

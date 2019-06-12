@@ -8,7 +8,8 @@ module.exports = [
   {
     type: 'input',
     name: 'path',
-    message: "Where should we put the service worker"
+    message: "Where should we put the service worker",
+    default: 'src/workers'
   },
   {
     type: 'input',
