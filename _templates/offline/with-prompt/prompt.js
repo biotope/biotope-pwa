@@ -5,7 +5,7 @@ const questions = [
     {
         type: 'input',
         name: 'path',
-        message: 'path to workers?',
+        message: 'path to workers? !think on the scope 🦆',
         default: './'
     },
     {
@@ -14,8 +14,6 @@ const questions = [
         message: 'product name 🤓 '
     },
   ];
-  
-  const { camelize, dasherize, underscore } = require('inflection');
   
   module.exports = {
     prompt: ({ inquirer }) => {
