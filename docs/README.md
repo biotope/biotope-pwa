@@ -13,4 +13,4 @@ See [app manifest](manifest.md) for further documentation.
 If your app should cache resources and be able to work offline, you should add a caching service worker to your project.
 You can easily do this be running `npx @biotope/cli pwa offline`.
 
-For configuration see [service worker](service-worker.md)
+For configuration see [service worker](offline-service-worker.md)
