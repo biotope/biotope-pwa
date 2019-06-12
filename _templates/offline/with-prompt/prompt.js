@@ -6,26 +6,13 @@ const questions = [
         type: 'input',
         name: 'path',
         message: 'path to workers?',
-        default: 'src/workers'
+        default: './'
     },
     {
         type: 'input',
         name: 'name',
         message: 'product name 🤓 '
     },
-    {
-        type: 'list',
-        name: 'display',
-        message: 'how should the application be displayed? ',
-        default: 'browser',
-        choices: ['browser', 'minimal-ui', 'fullscreen', 'standalone']
-    },
-    {
-        type: 'input',
-        name: 'startUrl',
-        message: 'where should the product start when launched? ',
-        default: '/index.html'
-    }
   ];
   
   const { camelize, dasherize, underscore } = require('inflection');

@@ -1,22 +1,23 @@
 ---
 to: <%= path %>/offline.worker.js
 ---
+
 var cacheName = '<%= name %>';
 
-this.addEventListener('install', function (event) {
+self.addEventListener('install', function (event) {
     event.waitUntil(
         caches.open(cacheName)
           .then(function (cache) {
             cache.addAll([
-              // ADD YOUR BUILDED FILES IN HERE
+                // add files paths here
             ]);
           })
       );
 });
 
-this.addEventListener('activate', function (event) {
+self.addEventListener('activate', function (event) {
   // clear cache when active
-  var cacheWhitelist = ['<%= name =>'];
+  var cacheWhitelist = ['<%= name %>'];
   event.waitUntil(
     caches.keys().then( function (keyList) {
       return Promise.all(keyList.map( function(key) {
@@ -28,13 +29,10 @@ this.addEventListener('activate', function (event) {
   );
 });
 
-this.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.open(cacheName).then( (cache) => {
-            return fetch(event.request).then( function (response) {
-              cache.put(event.request, response.clone());
-              return response;
-            });
-        })
-    );
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+        return response || fetch(event.request);
+    })
+  );
 });
