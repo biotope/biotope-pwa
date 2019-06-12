@@ -9,7 +9,8 @@
     "release": "np",
     "prepublishOnly": "npm run clean && npm install",
     "clean": "node_modules/.bin/rimraf node_modules",
-    "test": "echo \"No tests found\""
+    "test": "echo \"No tests found\"",
+    "docs": "docsify serve docs"
   },
   "dependencies": {
     "hygen": "^1.6.2",
@@ -24,6 +25,7 @@
     "node": ">=8.9.0"
   },
   "devDependencies": {
+    "docsify-cli": "^4.3.0",
     "http-server": "^0.11.1",
     "np": "^3.0.4",
     "rimraf": "^2.6.2"
