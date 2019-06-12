@@ -8,6 +8,7 @@ module.exports = (feature) => {
     console.error('No feature defined');
     return;
   }
+
   runner(`${feature} with-prompt`, {
     templates: defaultTemplates,
     cwd: process.cwd(),
