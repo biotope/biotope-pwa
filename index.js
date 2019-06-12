@@ -3,7 +3,7 @@ const Logger = require('hygen/lib/logger');
 const path = require('path')
 const defaultTemplates = path.join(__dirname, './_templates');
 
-module.exports = () => runner('component with-prompt', {
+module.exports = () => runner('manifest with-prompt', {
     templates: defaultTemplates,
     cwd: process.cwd(),
     logger: new Logger(console.log.bind(console)),
