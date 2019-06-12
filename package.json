@@ -4,12 +4,13 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "http-server ./demo",
+    "start": "http-server ./demo -S -C cert.pem -o ",
     "build": "echo \"build\"",
     "release": "np",
     "prepublishOnly": "npm run clean && npm install",
     "clean": "node_modules/.bin/rimraf node_modules",
     "test": "echo \"No tests found\"",
+    "cert": "openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem",
     "docs": "docsify serve docs"
   },
   "dependencies": {
