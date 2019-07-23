@@ -1,7 +1,6 @@
 ---
-to: <%= path %>/pushRegister.js
+to: <%= path %>/push.register.js
 ---
-
 const isServiceWorkerPushSupported = () => 'serviceWorker' in navigator && 'PushManager' in window;
 const isSubscribed = async () => (await swRegistration.pushManager.getSubscription()) !== null;
 const urlB64ToUint8Array = (base64String) => {
@@ -60,4 +59,5 @@ const setupPushNotifications = async (applicationKey) => {
   return createUnsubscribeUser(registration);
 }
 
-setupPushNotifications('<%= h.vapidKey %>');
+// you can now use it like this:
+// setupPushNotifications('<%= h.vapidKey %>');

@@ -1,8 +1,8 @@
 ---
-to: <%= path %>/pushWorker.js
+to: <%= path %>/push.worker.js
 ---
 'use strict';
-self.addEventListener('push', (event) => {
+self.addEventListener('push', event => {
   const title = '<%= title %>';
   const options = {
     body: event.data.text(),
@@ -11,7 +11,7 @@ self.addEventListener('push', (event) => {
   event.waitUntil(self.registration.showNotification(title, options));
 });
 
-self.addEventListener('notificationclick', function(event) {
+self.addEventListener('notificationclick', event => {
   // Add your code here
   event.notification.close();
 });
