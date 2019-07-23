@@ -1,2 +1,3 @@
 - [Manifest](manifest.md)
 - [Offline service worker](offline-service-worker.md)
+- [Push Notifications](push-notifications.md)
