@@ -25,13 +25,13 @@ const questions = [
         type: 'input',
         name: 'themeColor',
         message: 'define a theme color ',
-        default: '#ffffff'
+        default: '#00ff00'
     },
     {  
         type: 'input',
         name: 'backgroundColor',
         message: 'define a background color ',
-        default: '#ffffff'
+        default: '#ff0000'
     },
     {  
         type: 'input',
