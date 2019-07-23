@@ -15,10 +15,47 @@ const questions = [
         choices: ['browser', 'minimal-ui', 'fullscreen', 'standalone']
     },
     {
+        type: 'list',
+        name: 'orientation',
+        message: 'Do you wish to enforce a specific orientation?',
+        default: 'any',
+        choices: ['any', 'portrait', 'landscape']
+    },
+    {  
+        type: 'input',
+        name: 'themeColor',
+        message: 'define a theme color ',
+        default: '#00ff00'
+    },
+    {  
+        type: 'input',
+        name: 'backgroundColor',
+        message: 'define a background color ',
+        default: '#ff0000'
+    },
+    {  
+        type: 'input',
+        name: 'iconSmall',
+        message: 'define a 192x192 icon ',
+        default: '/src/resources/img/icon-small.png'
+    },
+    {  
+        type: 'input',
+        name: 'iconLarge',
+        message: 'define a 512x512 icon ',
+        default: '/src/resources/img/icon-large.png'
+    },
+    {  
         type: 'input',
         name: 'startUrl',
-        message: 'where should the product start when launched? ',
+        message: 'where to start the product when launched? ',
         default: '/index.html'
+    },
+    {
+        type: 'input',
+        name: 'directory',
+        message: 'where to create the manifest file? ',
+        default: 'src/resources'
     }
   ];
   
