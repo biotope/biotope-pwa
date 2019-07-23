@@ -1,4 +1,5 @@
 module.exports = {
 	yarn: false,
-  anyBranch: true
+  anyBranch: true,
+  releaseDraft: false
 };
