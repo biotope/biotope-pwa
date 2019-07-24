@@ -54,7 +54,7 @@ function executeWithInput(processPath, args = [], inputs = [], opts = {}) {
     inputs = [];
   }
 
-  const { env = null, timeout = 350, maxTimeout = 10000 } = opts;
+  const { env = null, timeout = 100, maxTimeout = 10000 } = opts;
   const childProcess = createProcess(processPath, args, env);
 
 
