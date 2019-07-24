@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const getColorOfSetting = (regexp) => {
     const pathToSettings = './src/resources/scss/settings/_settings.scss';
-    if(!fs.existsSync(pathToSettings)) {
+    if(fs.existsSync(pathToSettings)) {
         const content = fs.readFileSync(pathToSettings, 'utf-8');
         const match = content.match(regexp);
         if(match && match.length && match[1]) {
