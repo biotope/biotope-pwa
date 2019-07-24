@@ -17,7 +17,6 @@ const questions = [
       'Offline Caching',
       'Manifest'
     ],
-    validate: answer => answer.length > 0
   },
   {
     type: 'input',
