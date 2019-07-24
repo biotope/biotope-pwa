@@ -1,6 +1,8 @@
 ---
-to: <%= path %>/push.register.js
+to: <%= path %>/register.js
 ---
+
+<% if(features.indexOf("Push Notifications") != -1){ %>
 const isServiceWorkerPushSupported = () => 'serviceWorker' in navigator && 'PushManager' in window;
 const isSubscribed = async () => (await swRegistration.pushManager.getSubscription()) !== null;
 const urlB64ToUint8Array = (base64String) => {
@@ -20,7 +22,7 @@ const urlB64ToUint8Array = (base64String) => {
 
 
 
-const registerServiceWorker = async (swPath) => {
+const register = async (swPath) => {
   if (isServiceWorkerPushSupported()) {
     try {
       return await navigator.serviceWorker.register(swPath)
@@ -51,13 +53,17 @@ const createUnsubscribeUser = (registration) => () => {
     console.log('User is unsubscribed.');
   });
 }
+<% } %>
 
-
-const setupPushNotifications = async (applicationKey) => {
-  const registration = await registerServiceWorker('pushWorker.js');
-  await subscribeUser({registration, applicationKey});
+const registerServiceWorker = async (<% if(features.indexOf("Push Notifications") != -1){ %>applicationKey<% } %>) => {
+  const registration = await register('serviceworker.js');
+  console.log('Service Worker registered with scope:', registration.scope); 
+  <% if(features.indexOf("Push Notifications") != -1){ %>
+  const subscription = await subscribeUser({registration, applicationKey});
   return createUnsubscribeUser(registration);
+  <% } %>
 }
-
+<% if(features.indexOf("Push Notifications") != -1){ %>
 // you can now use it like this:
-// setupPushNotifications('<%= h.vapidKey %>');
+// registerServiceWorker(<% if(features.indexOf("Push Notifications") != -1){ %>'<%= h.vapidKey %>'<% } %>);
+<% } %>
