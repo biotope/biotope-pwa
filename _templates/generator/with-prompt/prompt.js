@@ -9,6 +9,7 @@ const questions = [
     type: 'checkbox',
     name: 'features',
     message: 'Which features do you want in your worker?',
+    validate: (features) => !!features.length,
     choices: [
       'Push Notifications',
       'Offline Caching',
