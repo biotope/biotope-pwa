@@ -1,5 +1,5 @@
 ---
-to: "<%= features.includes('Push Notifications') || features.includes('Offline Caching')  ?  path + '/register.js' : null %>"
+to: "<%= features.includes('Push Notifications') || features.includes('Offline Caching')  ?  workerPath + '/register.js' : null %>"
 ---
 
 <% if(features.indexOf("Push Notifications") != -1){ %>

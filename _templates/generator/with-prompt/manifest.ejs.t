@@ -1,5 +1,5 @@
 ---
-to: "<%= features.includes('Manifest') ?  directory + '/manifest.json' : null %>"
+to: "<%= features.includes('Manifest') ?  manifestPath + '/manifest.json' : null %>"
 ---
 <% if(features.includes('Manifest')) { %>
 {

@@ -1,5 +1,5 @@
 ---
-to: "<%= features.includes('Push Notifications') || features.includes('Offline Caching')  ?  path + '/serviceworker.js' : null %>"
+to: "<%= features.includes('Push Notifications') || features.includes('Offline Caching')  ?  workerPath + '/serviceworker.js' : null %>"
 ---
 <% if(features.includes('Push Notifications') || features.includes('Offline Caching')) { %>
 <% if(features.indexOf("Offline Caching") != -1){ %>var cacheName = '<%= name %>';

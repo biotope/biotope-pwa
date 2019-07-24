@@ -55,7 +55,7 @@
     },
     {
         type: 'input',
-        name: 'directory',
+        name: 'manifestPath',
         message: 'where to create the manifest file? ',
         default: 'src/resources',
         when: (answers) => answers.features.includes('Manifest')
