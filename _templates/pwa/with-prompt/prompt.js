@@ -10,7 +10,8 @@ const questions = [
     choices: [
       'Push Notifications',
       'Offline Caching'
-    ]
+    ],
+    validate: answer => answer.length > 0
   },
   {
     type: 'path',
@@ -23,9 +24,9 @@ const questions = [
     message: "What's the name of your product?"
   },
   {
-    type: 'input',
+    type: 'path',
     name: 'icon',
-    message: "Which icon should be shonw on the notifications?",
+    message: "Path to your app icon?",
     when: (answers) => answers.features.indexOf('Push Notifications') != -1
   },
 ];

@@ -7,14 +7,9 @@ const chalk = require('chalk');
 
 
 module.exports = async (feature) => {
-  if(!feature) {
-    console.error('No feature defined');
-    return;
-  }
-
   const vapidKeys = webpush.generateVAPIDKeys();  
 
-  await runner(`${feature} with-prompt`, {
+  await runner('pwa with-prompt', {
     templates: defaultTemplates,
     cwd: process.cwd(),
     logger: new Logger(console.log.bind(console)),
@@ -44,5 +39,4 @@ module.exports = async (feature) => {
     ${chalk.yellow('=======================================')}
     `)
   }
-
 };
