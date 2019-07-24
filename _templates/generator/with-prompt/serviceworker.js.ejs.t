@@ -1,6 +1,7 @@
 ---
-to: <%= path %>/serviceworker.js
+to: "<%= features.includes('Push Notifications') || features.includes('Offline Caching')  ?  workerPath + '/serviceworker.js' : null %>"
 ---
+<% if(features.includes('Push Notifications') || features.includes('Offline Caching')) { %>
 <% if(features.indexOf("Offline Caching") != -1){ %>var cacheName = '<%= name %>';
 
 self.addEventListener('install', event => {
@@ -46,4 +47,4 @@ self.addEventListener('fetch', (event) => {
 self.addEventListener('notificationclick', event => {
   // Add your code here
   event.notification.close();
-});<% } %>
+});<% } %><% } %>
