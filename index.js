@@ -4,12 +4,14 @@ const path = require('path')
 const defaultTemplates = path.join(__dirname, './_templates');
 const webpush = require('web-push');
 const chalk = require('chalk');
+const inquirer = require('inquirer')
 
 
 module.exports = async (feature) => {
+
   const vapidKeys = webpush.generateVAPIDKeys();  
 
-  await runner('pwa with-prompt', {
+  await runner(`generator with-prompt`, {
     templates: defaultTemplates,
     cwd: process.cwd(),
     logger: new Logger(console.log.bind(console)),

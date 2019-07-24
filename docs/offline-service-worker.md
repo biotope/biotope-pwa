@@ -61,5 +61,6 @@ self.addEventListener('fetch', (event) => {
 
 > Be aware that you have to cache the offline.html on the install handler first (and all assets that are related to it). So that the worker knows about it
 
+> we should think about updating workers
 
 ### Thanks for using PWA.
