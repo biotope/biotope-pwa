@@ -17,7 +17,7 @@ const questions = [
       'Push Notifications',
       'Offline Caching',
       'Manifest'
-    ]
+    ],
   },
   {
     type: 'input',

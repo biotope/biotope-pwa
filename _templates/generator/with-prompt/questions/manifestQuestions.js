@@ -49,15 +49,14 @@
     {  
         type: 'input',
         name: 'startUrl',
-        message: 'where to start the product when launched? ',
+        message: 'Which page should be initially opened?',
         default: '/index.html',
         when: (answers) => answers.features.includes('Manifest')
     },
     {
-        type: 'input',
+        type: 'path',
         name: 'manifestPath',
-        message: 'where to create the manifest file? ',
-        default: 'src/resources',
+        message: 'Where should we put the manifest.json?',
         when: (answers) => answers.features.includes('Manifest')
     }
   ];
