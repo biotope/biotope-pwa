@@ -17,9 +17,9 @@ In case you use our generator, you have to answer the following questions:
 
 [**orientation:**](https://developer.mozilla.org/en-US/docs/Web/Manifest/orientation) Defines the default orientation for all the website's top-level browsing contexts.
 
-[**theme color:**](https://developer.mozilla.org/en-US/docs/Web/Manifest/theme_color) Defines the default theme color for the application. This sometimes affects how the OS displays the site (e.g., on Android's task switcher, the theme color surrounds the site).
+[**theme color:**](https://developer.mozilla.org/en-US/docs/Web/Manifest/theme_color) Defines the default theme color for the application. This sometimes affects how the OS displays the site (e.g., on Android's task switcher, the theme color surrounds the site). The generator detects, if there is a primary color defined in the settings.scss and suggests it as a default color.
 
-[**background color:**](https://developer.mozilla.org/en-US/docs/Web/Manifest/background_color) Defines a placeholeder background color for the application page to display before its stylesheet is loaded.
+[**background color:**](https://developer.mozilla.org/en-US/docs/Web/Manifest/background_color) Defines a placeholeder background color for the application page to display before its stylesheet is loaded. The generator detects, if there is a secondary color defined in the settings.scss and suggests it as a default color.
 
 [**icons:**](https://developer.mozilla.org/en-US/docs/Web/Manifest/icons) Representing image files that can serve as application iconsfor different contexts. You have to define a small one (192x192) and a large one (512x512).
 
