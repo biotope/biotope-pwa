@@ -4,8 +4,8 @@
 module.exports = [
   {
     type: 'path',
-    name: 'WorkerPath',
+    name: 'workerPath',
     message: 'Where should we put the service worker? (Remember the scoping! )',
-    when: (answers) => answers.features.includes('Push Notification') || answers.features.includes('Offline Caching')
+    when: (answers) => answers.features.includes('Push Notifications') || answers.features.includes('Offline Caching')
   }
 ];
