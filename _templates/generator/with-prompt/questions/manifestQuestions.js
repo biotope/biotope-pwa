@@ -3,10 +3,13 @@ const fs = require('fs');
 // https://github.com/SBoudrias/Inquirer.js#prompt-types
 
 const getColorOfSetting = (regexp) => {
-    const content = fs.readFileSync('./src/resources/scss/settings/_settings.scss', 'utf-8');
-    const match = content.match(regexp);
-    if(match && match.length && match[1]) {
-        return match[1].trim();
+    const pathToSettings = './src/resources/scss/settings/_settings.scss';
+    if(!fs.existsSync(pathToSettings)) {
+        const content = fs.readFileSync(pathToSettings, 'utf-8');
+        const match = content.match(regexp);
+        if(match && match.length && match[1]) {
+            return match[1].trim();
+        }
     }
     return 'white';
 }
