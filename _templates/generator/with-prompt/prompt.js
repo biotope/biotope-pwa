@@ -3,7 +3,7 @@ const manifestQuestions = require('./questions/manifestQuestions');
 const serviceWorkerQuestions = require('./questions/serviceWorkerQuestions');
 const vapidKeys = require('./vapidKeys');
 const chalk = require('chalk');
-const getFeatureSupportForAllowedBrowsers = require('../../../browserHelper')
+const logFeatureSupportForAllowedBrowsers = require('../../../browserHelper')
 // see types of prompts:
 // https://github.com/SBoudrias/Inquirer.js#prompt-types
 
@@ -35,8 +35,12 @@ module.exports = {
     return new Promise((resolve, reject) => { 
       inquirer
       .prompt(questions).then((answers) => {
+        const featureMap = {
+          'Push Notifications': 'push-api',
+          'Offline Caching': 'offline-apps',
+          'Manifest': 'web-app-manifest'
+        }
         if(answers.features.includes('Push Notifications')) {
-          getFeatureSupportForAllowedBrowsers('push-api');
           console.log(`
             ${chalk.yellow('=======================================')}
         
@@ -53,6 +57,10 @@ module.exports = {
             ${chalk.yellow('=======================================')}
           `)
         }
+        answers.features
+          .map(feature => featureMap[feature])
+          .map(logFeatureSupportForAllowedBrowsers)
+
         return resolve(answers)
       }).catch(reject)
     })

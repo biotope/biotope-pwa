@@ -1,0 +1,21 @@
+
+{
+  "short_name": "",
+  "icons": [
+    {
+      "src": "/src/resources/img/icon-large.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/src/resources/img/icon-small.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "display": "browser",
+  
+  "start_url": "/index.html",
+  "theme_color": "#00ff00",
+  "background_color": "#ff0000"
+}
