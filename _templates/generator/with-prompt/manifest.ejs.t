@@ -1,6 +1,7 @@
 ---
-to: <%= directory %>/manifest.json
+to: "<%= features.includes('Manifest') ?  manifestPath + '/manifest.json' : null %>"
 ---
+<% if(features.includes('Manifest')) { %>
 {
   "short_name": "<%= name %>",
   "icons": [
@@ -10,8 +11,8 @@ to: <%= directory %>/manifest.json
       "sizes": "512x512"
     },
     {
-      "src": "<%= iconSmall %>",
-      "type": "image/<%- iconSmall.split('.').pop() %>",
+      "src": "<%= icon  %>",
+      "type": "image/<%- icon.split('.').pop() %>",
       "sizes": "192x192"
     }
   ],
@@ -21,3 +22,4 @@ to: <%= directory %>/manifest.json
   "theme_color": "<%= themeColor %>",
   "background_color": "<%= backgroundColor %>"
 }
+<% } %>

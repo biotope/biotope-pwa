@@ -1,12 +1,10 @@
----
-to: <%= path %>/push.worker.js
----
-'use strict';
+
+
 self.addEventListener('push', event => {
-  const title = '<%= title %>';
+  const title = '';
   const options = {
     body: event.data.text(),
-    image: '<%= icon %>'
+    image: '/src/resources/img/icon-small.png'
   };
   event.waitUntil(self.registration.showNotification(title, options));
 });
