@@ -7,7 +7,7 @@ The PWA manifest is a JSON file that tells the browser about the web application
 The Manifest File is essential for a PWA. You should use it for every Website and Application, if you want to call it a PWA.
 
 ## How to use it?
-To add a manifest just use our generator `npx @biotope/cli pwa manifest` or any generic [manifest generator on the web](https://app-manifest.firebaseapp.com/).
+To add a manifest just use our generator `biotope pwa` and choose the feature `Manifest` or any generic [manifest generator on the web](https://app-manifest.firebaseapp.com/).
 
 In case you use our generator, you have to answer the following questions:
 
