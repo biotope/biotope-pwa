@@ -6,7 +6,7 @@ You can combine it with the offline availability to inform the user, that a sear
 !> Do not missuse push notification and spoil the users experience with it. There is a small line between usefull and nervewrecking!
 
 ## How to use it
-To generate the service worker, as well as the registering file, run `npx @biotope/cli pwa` and choose `Push Notifications` in your project, and follow the steps.
+To generate the service worker, as well as the registering file, run `biotope pwa` and choose `Push Notifications` in your project, and follow the steps.
   
 This will create a `register.js` and a `serviceworker.js` in the same folder. To use the generated code, just include the `register.js` in your project.  
 At the end of the generation process a public and a private VAPID key will be presented to you.
