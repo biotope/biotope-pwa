@@ -1,7 +1,7 @@
 ---
-to: <%= path %>/offline.worker.js
+to: <%= path %>/serviceworker.js
 ---
-var cacheName = '<%= name %>';
+<% if(features.indexOf("Offline Caching") != -1){ %>var cacheName = '<%= name %>';
 
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -33,4 +33,17 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then(response => response || fetch(event.request))
   );
+});<% } %>
+<% if(features.indexOf("Push Notifications") != -1){ %>self.addEventListener('push', event => {
+  const title = '<%= name %>';
+  const options = {
+    body: event.data.text(),
+    image: '<%= icon %>'
+  };
+  event.waitUntil(self.registration.showNotification(title, options));
 });
+
+self.addEventListener('notificationclick', event => {
+  // Add your code here
+  event.notification.close();
+});<% } %>
