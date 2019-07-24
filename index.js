@@ -4,6 +4,7 @@ const path = require('path')
 const defaultTemplates = path.join(__dirname, './_templates');
 const webpush = require('web-push');
 const chalk = require('chalk');
+const caniuse = require('caniuse-api');
 
 
 module.exports = async (feature) => {
@@ -12,7 +13,7 @@ module.exports = async (feature) => {
     return;
   }
 
-  const vapidKeys = webpush.generateVAPIDKeys();  
+  const vapidKeys = webpush.generateVAPIDKeys();
 
   await runner(`${feature} with-prompt`, {
     templates: defaultTemplates,
@@ -43,6 +44,72 @@ module.exports = async (feature) => {
 
     ${chalk.yellow('=======================================')}
     `)
+  }
+
+  if(feature == 'browser') {
+
+    const matched = x => ({
+      on: () => matched(x),
+      otherwise: () => x,
+    })
+
+    const match = x => ({  
+      on: (pred, fn) => (pred(x) ? matched(fn(x)) : match(x)),
+      otherwise: fn => fn(x),
+    })
+
+    const allowedBrowsers = ['chrome', 'firefox', 'safari', 'edge', 'ie', 'and_chr', 'ios_saf'];
+
+    const browserNameMap = {
+      'chrome': 'Chrome',
+      'firefox': 'Firebox',
+      'safari': 'Safari',
+      'edge': 'Edge',
+      'ie': 'Internet Explorer',
+      'and_chr': 'Android Chrome',
+      'ios_saf': 'iOS Safari',
+    }
+
+    const featureNameMap = {
+      'web-app-manifest': 'Web Application Manifest',
+      'serviceworkers': 'Service Workers',
+      'offline-apps': 'Offline Web Application'
+    }
+
+    const getNameForBrowser = (key) => browserNameMap[key] || key;
+    const getNameForFeature = (key) => featureNameMap[key] || key;
+
+    const hasKey = (key) => (obj) => obj[key];
+    
+    const isSupported = hasKey('y');
+    const isPartiallySupported = hasKey('a');
+    const isSupportedWithPrefix = hasKey('x');
+    const isNotSupported = hasKey('n');
+    
+    const logSupport = (browser, color, message, key) => (version) => console.log(getNameForBrowser(browser) + ' ' + chalk[color](message + ' ' +  version[key]));
+
+    const getFeatureSupportFor = (allowedBrowsers) => (featureName) => {
+      const feature = caniuse.getSupport(featureName);
+      const mappedFeatureName = getNameForFeature(featureName);
+      console.log(`
+        ${mappedFeatureName}
+        ${chalk.yellow('=======================================')}
+      `)
+      Object.keys(feature).filter(browser => allowedBrowsers.indexOf(browser) !== -1).map(browser => {
+        match(feature[browser])
+          .on(isSupported, logSupport(browser, 'green', 'supported ≥', 'y'))
+          .on(isPartiallySupported, logSupport(browser, 'yellow', 'partially supported ≥', 'a'))
+          .on(isSupportedWithPrefix, logSupport(browser, 'magenta', 'supported with prefix ≥', 'x'))
+          .on(isNotSupported, logSupport(browser, 'red', 'not supported ≤', 'n'))
+          .otherwise(() => console.log('no value'))
+      });
+    }
+
+    const getFeatureSupportForAllowedBrowsers = getFeatureSupportFor(allowedBrowsers);
+
+    getFeatureSupportForAllowedBrowsers('web-app-manifest');
+    getFeatureSupportForAllowedBrowsers('serviceworkers');
+    getFeatureSupportForAllowedBrowsers('offline-apps');
   }
 
 };
