@@ -16,5 +16,4 @@ module.exports = async (feature) => {
       vapidKey: vapidKeys.publicKey
     }
   });
-
 };

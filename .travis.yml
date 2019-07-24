@@ -4,6 +4,10 @@ node_js:
 install: npm install
 jobs:
   include:
+    - stage: "Test"
+      name: "Test"
+      script:
+        - npm run test
     - stage: "Deploy"
       name: "Deploy"
       if: tag IS present
