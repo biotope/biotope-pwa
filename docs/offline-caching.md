@@ -1,4 +1,4 @@
-# Offline service worker
+# Offline Caching
 
 ## What is it about: 
 
