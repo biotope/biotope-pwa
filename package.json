@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "start": "http-server ./demo -S -C cert.pem -o ",
+    "start": "http-server ./demo -S -o",
     "build": "echo \"build\"",
     "release": "np",
     "test": "echo \"No tests found\"",
