@@ -10,10 +10,10 @@ It could be useful for every case of web application. So even if you are visitin
 
 ## How would you use it with @biotope/pwa:
 
-**@biotope/pwa** generates over a command `biotope pwa offline` a service worker js named `offlineWorker.js` file with the behavior to cache requests and if the requests aren't responding the worker is using cached responds. Additionally you could add a predefined stack of static files to cache them. Or write your own behaviour on offline requests. 
-During the generation process, you will be ask for the `path` where you want to place the generated files and the `name` of the project.
+**@biotope/pwa** generates over the command `biotope pwa` and choosing `Offline Caching` a service worker js named `serviceworker.js` file with the behaviour to cache requests and if the requests aren't responding the worker is using cached responds. Additionally you could add a predefined stack of static files to cache them. Or write your own behaviour on offline requests. 
+During the generation process, you will be ask for the `project name` and the `path`, where you like to put the worker files. Beware of the scoping! 
 
-Beside the worker, the generation process creates an `offlineRegistration.js` which has the default registration of the `offlineWorker.js` in it.
+Beside the worker, the generation process creates an `register.js` which has the default registration of the `serviceworker.js` in it.
 It will be placed on the same path the worker were defined.
 
 > Be aware that you can't handle requests outside of your scope. The scope depends on the **path** of the worker.
