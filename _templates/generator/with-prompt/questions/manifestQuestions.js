@@ -1,5 +1,19 @@
+const fs = require('fs');
 // see types of prompts:
 // https://github.com/SBoudrias/Inquirer.js#prompt-types
+
+const getColorOfSetting = (regexp) => {
+    const pathToSettings = './src/resources/scss/settings/_settings.scss';
+    if(fs.existsSync(pathToSettings)) {
+        const content = fs.readFileSync(pathToSettings, 'utf-8');
+        const match = content.match(regexp);
+        if(match && match.length && match[1]) {
+            return match[1].trim();
+        }
+    }
+    return 'white';
+}
+
 
  module.exports = [
     {
@@ -22,14 +36,14 @@
         type: 'input',
         name: 'themeColor',
         message: 'define a theme color ',
-        default: '#00ff00',
+        default: getColorOfSetting(/\$primary:([^;]*)/),
         when: (answers) => answers.features.includes('Manifest')
     },
     {  
         type: 'input',
         name: 'backgroundColor',
         message: 'define a background color ',
-        default: '#ff0000',
+        default: getColorOfSetting(/\$secondary:([^;]*)/),
         when: (answers) => answers.features.includes('Manifest')
     },
     {  
