@@ -38,7 +38,7 @@
     "cross-spawn": "^6.0.5",
     "docsify-cli": "^4.3.0",
     "http-server": "^0.11.1",
-    "mocha": "^6.2.0",
+    "mocha": "^6.2.1",
     "np": "^5.1.0",
     "rimraf": "^2.7.1"
   }
